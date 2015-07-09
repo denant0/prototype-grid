@@ -42,10 +42,19 @@ Ext.onReady(function(){
         height:800,
         region: 'north',
         plugins: 'gridfilters',
+        multiSelect: true,
+        selType: 'checkboxmodel',
         features: [{
             ftype: 'groupingsummary',
             groupHeaderTpl: 'Asset Type: {name}'
-        }]
+        }],
+        listeners: {
+            'cellclick': function(iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
+                Ext.Msg.alert('Cell click', 'Cell: ' + iColIdx + ' Row: ' + iRowIdx);
+                var detailPanel = Ext.getCmp('detailPanel');
+                detailPanel.update('Asset Status: ' + iStore.data.AssetStatus);
+            }
+        }
     });
 
     var Panel = {
@@ -54,7 +63,7 @@ Ext.onReady(function(){
         bodyPadding: 7,
         bodyStyle: "background: #ffffff;",
         html: 'Please select a row.'
-    }
+    };
 
     Ext.create('Ext.container.Viewport',{
         items:
@@ -66,10 +75,4 @@ Ext.onReady(function(){
 
     Store.load();
 
-    Grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-        if (selectedRecord.length) {
-            var detailPanel = Ext.getCmp('detailPanel');
-            detailPanel.update('Asset Status: ' + selectedRecord[0].data.AssetStatus);
-        }
-    });
 });
