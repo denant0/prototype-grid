@@ -18,7 +18,8 @@ var data =
             RoomCode: '',
             BusinessUnit: '',
             DivisionCode: '',
-            DepartmentCode: ''
+            DepartmentCode: '',
+            Data: '10.10.2010'
         },
         {
             AssetType: 'property',

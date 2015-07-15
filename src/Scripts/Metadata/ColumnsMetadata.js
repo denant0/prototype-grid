@@ -2,7 +2,7 @@ function summary(value){
     return Ext.String.format('Sum: {0}', value);
 }
 
-var columnsMetadata = [
+var columnsExtJsMetadata = [
     {text: 'Asset Type', width: 150, dataIndex: 'AssetType', sortable: true, summaryType: 'count',
         summaryRenderer: summary
     },
@@ -33,4 +33,24 @@ var columnsMetadata = [
     }
 ];
 
-module.exports = columnsMetadata;
+var columnsDevExpressMetadata = [
+    {caption: 'Asset Type', dataField: 'AssetType', dataType: 'string', groupIndex: 0, width: 200},
+    {caption: 'Asset Standard', dataField: 'AssetStandard', dataType: 'string', width: 200},
+    {caption: 'Asset Status', dataField: 'AssetStatus', dataType: 'string', width: 200},
+    {caption: 'Title/Description', dataField: 'TitleDescription', dataType: 'string', width: 200},
+    {caption: 'Geo-Region ID', dataField: 'GeoRegionID', dataType: 'string', width: 200},
+    {caption: 'Country Code', dataField: 'CountryCode', dataType: 'string', width: 200},
+    {caption: 'State Code', dataField: 'StateCode', dataType: 'string', width: 200},
+    {caption: 'City Code', dataField: 'CityCode', dataType: 'string', width: 200},
+    {caption: 'Site Code', dataField: 'SiteCode', dataType: 'string', width: 200},
+    {caption: 'Building Code', dataField: 'BuildingCode', dataType: 'string', width: 200},
+    {caption: 'Floor Code', dataField: 'FloorCode', dataType: 'string', width: 200},
+    {caption: 'Room Code', dataField: 'RoomCode', dataType: 'string', width: 200},
+    {caption: 'Business Unit', dataField: 'BusinessUnit', dataType: 'string', width: 200},
+    {caption: 'Division Code', dataField: 'DivisionCode', dataType: 'string', width: 200},
+    {caption: 'Department Code', dataField: 'DepartmentCode', dataType: 'string', width: 200},
+    {caption: 'Date', dataField: 'Data', dataType: 'data', width: 200}
+];
+
+module.exports.ColumnsExtJs = columnsExtJsMetadata;
+module.exports.ColumnsDevExpress = columnsDevExpressMetadata;
