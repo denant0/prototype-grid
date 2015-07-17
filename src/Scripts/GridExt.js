@@ -1,4 +1,4 @@
-var itemsPerPage = 50;
+var itemsPerPage = 100;
 
 var columnsMetadata = require('../Scripts/Metadata/ColumnsMetadata').ColumnsExtJs;
 var dataMetadata = require('../Scripts/Metadata/ModelMetadata');
