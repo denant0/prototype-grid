@@ -14,12 +14,8 @@ $(function ()
         paging: {
             pageSize: 100
         },
-        sortByGroupSummaryInfo: [{
-            summaryItem: 'count'
-        }],
         groupPanel: {
-            visible: true,
-            allowColumnDragging: false
+            visible: true
         },
         summary: {
             groupItems: [{
