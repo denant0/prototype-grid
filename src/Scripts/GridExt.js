@@ -1,14 +1,14 @@
 var itemsPerPage = 100;
 
 var columnsMetadata = require('../Scripts/Metadata/ColumnsMetadata').ColumnsExtJs;
-var dataMetadata = require('../Scripts/Metadata/ModelMetadata');
+var modelMetadata = require('../Scripts/Metadata/ModelMetadata').ModelExtJs;
 var data= require('../Scripts/Dataset/Data');
 
 Ext.onReady(function(){
 
     Ext.define('Assets',{
         extend: 'Ext.data.Model',
-        fields: dataMetadata
+        fields: modelMetadata
     });
 
     var Store = Ext.create('Ext.data.Store', {

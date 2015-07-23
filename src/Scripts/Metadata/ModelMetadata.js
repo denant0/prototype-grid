@@ -1,4 +1,4 @@
-var dataMetadata = [
+var modelExtJsMetadata = [
     { name: 'AssetType', type: 'string'},
     { name: 'AssetStandard', type: 'string'},
     { name: 'AssetStatus', type: 'string'},
@@ -17,4 +17,24 @@ var dataMetadata = [
     { name: 'Data', type:'date', dateFormat: 'n/j/Y'}
 ];
 
-module.exports = dataMetadata;
+var modelKendoMetadata =  {
+        AssetType: { type: "string" },
+        AssetStandard: { type: "string" },
+        AssetStatus: { type: "string" },
+        TitleDescription: { type: "string" },
+        GeoRegionID: { type: "string" },
+        CountryCode: { type: "string" },
+        StateCode: { type: "string" },
+        CityCode: { type: "string" },
+        SiteCode: { type: "string" },
+        BuildingCode: { type: "string" },
+        FloorCode: { type: "string" },
+        RoomCode: { type: "string" },
+        BusinessUnit: { type: "string" },
+        DivisionCode: { type: "string" },
+        DepartmentCode: { type: "string" },
+        Data: { type: "date" }
+    };
+
+module.exports.ModelExtJs = modelExtJsMetadata;
+module.exports.ModelKendo = modelKendoMetadata;
