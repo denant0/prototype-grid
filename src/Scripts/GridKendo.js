@@ -30,7 +30,7 @@ $(document).ready(function () {
             },
             pageSize: 100
         },
-        height: 550,
+        height: 800,
         resizable: true,
         sortable: {
             mode: "single",
