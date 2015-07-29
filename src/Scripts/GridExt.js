@@ -4,11 +4,22 @@ var columnsMetadata = require('../Scripts/Metadata/ColumnsMetadata').ColumnsExtJ
 var modelMetadata = require('../Scripts/Metadata/ModelMetadata').ModelExtJs;
 var data= require('../Scripts/Dataset/Data');
 
+
+
 Ext.onReady(function(){
 
     Ext.define('Assets',{
         extend: 'Ext.data.Model',
         fields: modelMetadata
+    });
+
+    Ext.EventManager.onWindowResize(function () {
+        var height = Ext.getBody().getViewSize().height - 200;
+        if (height < 300){
+            height = 300;
+        }
+        Grid.setSize(Ext.getBody().getViewSize().width, height);
+
     });
 
     var Store = Ext.create('Ext.data.Store', {
@@ -39,8 +50,9 @@ Ext.onReady(function(){
         }],
         renderTo: Ext.getBody(),
         columns: columnsMetadata,
-        height:800,
+        height: 800,
         region: 'north',
+        layout:'fit',
         plugins: 'gridfilters',
         multiSelect: true,
         selType: 'checkboxmodel',
@@ -54,6 +66,9 @@ Ext.onReady(function(){
                 var detailPanel = Ext.getCmp('detailPanel');
                 detailPanel.update('Asset Status: ' + iStore.data.AssetStatus);
             }
+        },
+        viewConfig: {
+            forceFit: true
         }
     });
 
@@ -76,3 +91,4 @@ Ext.onReady(function(){
     Store.load();
 
 });
+
