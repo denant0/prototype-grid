@@ -2,6 +2,24 @@ $(function ()
 {
     var data = require('./Dataset/Data');
     var columnsMetadata = require('./Metadata/ColumnsMetadata').ColumnsDevExpress;
+
+    var initialContainerHeight = $("#gridContainer").height();
+
+    function onResize(){
+        var dataGrid = $('#gridContainer').dxDataGrid('instance');
+        dataGrid.option({
+            height: $(window).height() - 10
+        });
+    }
+
+    function gridHeight(){
+       return $(window).height() - 10;
+    }
+
+    $(window).resize(function(){
+        onResize();
+    });
+
     $("#gridContainer").dxDataGrid({
         dataSource: data.data,
         columns: columnsMetadata,
@@ -44,6 +62,7 @@ $(function ()
             $('#details').show();
             $('#cell').text("Cell: " + clickedCell.columnIndex);
             $('#row').text("Row: " + clickedCell.rowIndex);
-        }
+        },
+        height: gridHeight
     });
 });
