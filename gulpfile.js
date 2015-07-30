@@ -23,7 +23,7 @@ gulp.task('kendo', function(){
     gulp.src('src/Scripts/GridKendo.js')
         .pipe(browserify({transform: 'reactify'}))
         .pipe(concat('GridKendo.js'))
-
+        .pipe(uglify())
         .pipe(gulp.dest('dist/Scripts'));
 });
 

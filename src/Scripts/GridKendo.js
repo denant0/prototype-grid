@@ -2,7 +2,10 @@ var data= require('../Scripts/Dataset/Data');
 var modelMetadata = require('../Scripts/Metadata/ModelMetadata').ModelExtJs;
 var columnsMetadata = require('../Scripts/Metadata/ColumnsMetadata').ColumnsKendo;
 
+
 $(document).ready(function () {
+
+    var gridElement = $("#gridContainer");
 
     function onChange(arg) {
         var selected = $.map(this.select(), function(item) {
@@ -13,8 +16,15 @@ $(document).ready(function () {
         kendoConsole.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
     }
 
+    function resizeGrid() {
+        gridElement.data("kendoGrid").resize();
+    }
 
-    $("#gridContainer").kendoGrid({
+    $(window).resize(function(){
+        resizeGrid();
+    });
+
+    gridElement.kendoGrid({
         dataSource: {
             data: data.data,
             schema: {
@@ -30,7 +40,6 @@ $(document).ready(function () {
             },
             pageSize: 100
         },
-        height: 800,
         resizable: true,
         sortable: {
             mode: "single",
@@ -49,3 +58,6 @@ $(document).ready(function () {
         change: onChange
     });
 });
+
+
+
