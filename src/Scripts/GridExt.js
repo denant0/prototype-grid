@@ -14,10 +14,7 @@ Ext.onReady(function(){
     });
 
     Ext.EventManager.onWindowResize(function () {
-        var height = Ext.getBody().getViewSize().height - 200;
-        if (height < 300){
-            height = 300;
-        }
+        var height = Ext.getBody().getViewSize().height - 33;
         Grid.setSize(Ext.getBody().getViewSize().width, height);
 
     });
