@@ -1,10 +1,14 @@
 var itemsPerPage = 100;
+var lengthConsole = 33;
 
-var columnsMetadata = require('../Scripts/Metadata/ColumnsMetadata').ColumnsExtJs;
-var modelMetadata = require('../Scripts/Metadata/ModelMetadata').ModelExtJs;
+var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsExtJsMetadata');
+var modelMetadata = require('../Scripts/Metadata/Model/ModelExtJsMetadata');
 var data= require('../Scripts/Dataset/Data');
 
-
+function cellClick (iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
+    var detailPanel = Ext.getCmp('detailPanel');
+    detailPanel.update('Click: ' + 'Cell: ' + iColIdx + ', Row: ' + iRowIdx + ', Text cell: ' + iCellEl.textContent);
+}
 
 Ext.onReady(function(){
 
@@ -14,9 +18,8 @@ Ext.onReady(function(){
     });
 
     Ext.EventManager.onWindowResize(function () {
-        var height = Ext.getBody().getViewSize().height - 33;
+        var height = Ext.getBody().getViewSize().height - lengthConsole;
         Grid.setSize(Ext.getBody().getViewSize().width, height);
-
     });
 
     var Store = Ext.create('Ext.data.Store', {
@@ -58,11 +61,7 @@ Ext.onReady(function(){
             groupHeaderTpl: 'Asset Type: {name}'
         }],
         listeners: {
-            'cellclick': function(iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
-                Ext.Msg.alert('Cell click', 'Cell: ' + iColIdx + ' Row: ' + iRowIdx);
-                var detailPanel = Ext.getCmp('detailPanel');
-                detailPanel.update('Asset Status: ' + iStore.data.AssetStatus);
-            }
+            'cellclick': cellClick
         },
         viewConfig: {
             forceFit: true

@@ -1,7 +1,7 @@
 $(function ()
 {
     var data = require('./Dataset/Data');
-    var columnsMetadata = require('./Metadata/ColumnsMetadata').ColumnsDevExpress;
+    var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsMetadata').ColumnsDevExpress;
 
     var initialContainerHeight = $("#gridContainer").height();
 
@@ -64,5 +64,6 @@ $(function ()
             $('#row').text("Row: " + clickedCell.rowIndex);
         },
         height: gridHeight
+
     });
 });

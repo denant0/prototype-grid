@@ -34,6 +34,8 @@ gulp.task('copy', function(){
         .pipe(gulp.dest('dist'));
     gulp.src('src/indexKendo.html')
         .pipe(gulp.dest('dist'));
+    gulp.src('src/Style/**/*.*')
+        .pipe(gulp.dest('dist/Style/'));
     gulp.src('src/Scripts/ExtJS/**/*.*')
         .pipe(gulp.dest('dist/Scripts/ExtJS/'));
     gulp.src('src/Scripts/DevExpress/**/*.*')
