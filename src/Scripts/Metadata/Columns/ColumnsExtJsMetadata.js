@@ -1,24 +1,31 @@
 var classStyle = require('../Enumeration').ClassStyle;
 var dataIndex = require('../Enumeration').DataIndex;
 var columnTitle = require('../Enumeration').ColumnsText;
+var buttonsMetadata = require('../Enumeration').ButtonsMetadata;
+
 
 function summaryRendererAssetType(value){
     return Ext.String.format('Sum: {0}', value);
 }
 
-function renderActivity (val, metaData) {
+function renderActivity (value, metaData) {
     var currentEnumStyle = classStyle[metaData.column.dataIndex];
     for(element in currentEnumStyle){
-        if(currentEnumStyle[element].cellText == val){
+        if(currentEnumStyle[element].cellText == value){
             metaData.tdCls = currentEnumStyle[element].classStyle;
         }
     }
-    return val;
+    return value;
 }
 
+/*function renderButton(value, metadata, record){
+
+}*/
+Ext.Loader.setConfig({ enabled: true
+});
 var columnsExtJsMetadata = [
     {
-        text: columnTitle.AssetType,
+        header: columnTitle.AssetType,
         dataIndex: dataIndex.AssetType,
         width: 150,
         sortable: true,
@@ -27,17 +34,17 @@ var columnsExtJsMetadata = [
         renderer: renderActivity
     },
     {
-        text: columnTitle.AssetStandard,
+        header: columnTitle.AssetStandard,
         dataIndex: dataIndex.AssetStandard,
-        width: 125,
+        width: 150,
         sortable: true,
         filter:  'string',
         renderer: renderActivity
     },
     {
-        text: columnTitle.AssetStatus,
+        header: columnTitle.AssetStatus,
         dataIndex: dataIndex.AssetStatus,
-        width: 125,
+        width: 150,
         sortable: true,
         filter: {
             type: 'list',
@@ -46,93 +53,93 @@ var columnsExtJsMetadata = [
         renderer: renderActivity
     },
     {
-        text: columnTitle.TitleDescription,
+        header: columnTitle.TitleDescription,
         dataIndex: dataIndex.TitleDescription,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.GeoRegionID,
+        header: columnTitle.GeoRegionID,
         dataIndex: dataIndex.GeoRegionID,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.CountryCode,
+        header: columnTitle.CountryCode,
         dataIndex: dataIndex.CountryCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.StateCode,
+        header: columnTitle.StateCode,
         dataIndex: dataIndex.StateCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.CityCode,
+        header: columnTitle.CityCode,
         dataIndex: dataIndex.CityCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.SiteCode,
+        header: columnTitle.SiteCode,
         dataIndex: dataIndex.SiteCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.BuildingCode,
+        header: columnTitle.BuildingCode,
         dataIndex: dataIndex.BuildingCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.FloorCode,
+        header: columnTitle.FloorCode,
         dataIndex: dataIndex.FloorCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.RoomCode,
+        header: columnTitle.RoomCode,
         dataIndex: dataIndex.RoomCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.BusinessUnit,
+        header: columnTitle.BusinessUnit,
         dataIndex: dataIndex.BusinessUnit,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.DivisionCode,
+        header: columnTitle.DivisionCode,
         dataIndex: dataIndex.DivisionCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.DepartmentCode,
+        header: columnTitle.DepartmentCode,
         dataIndex: dataIndex.DepartmentCode,
-        width: 125,
+        width: 150,
         sortable: true,
         renderer: renderActivity
     },
     {
-        text: columnTitle.Data,
+        header: columnTitle.Data,
         dataIndex: dataIndex.Data,
-        width: 125,
+        width: 150,
         sortable: true,
         xtype:'datecolumn',
         format: 'd/m/Y',
@@ -140,8 +147,53 @@ var columnsExtJsMetadata = [
             type: 'date',
             dateFormat: 'm/d/Y'
         },
+
         renderer: renderActivity
+    },
+    {
+        header: 'Buttons',
+        width: 150,
+        renderer: renderBtn
+
     }
+
 ];
+
+function renderBtn(value, metadata, record) {
+    var delay = 1;
+    var result = '<table>';
+    for(conditionNumber in buttonsMetadata){
+        var condition = buttonsMetadata[conditionNumber].condition;
+        if(record.data[condition.column] == condition.value) {
+            var items = buttonsMetadata[conditionNumber].items;
+            for (lineNumber in items) {
+                result = Ext.String.format('{0}<tr>', result);
+                var line = items[lineNumber];
+                for (buttonNumber in line) {
+                    var button = line[buttonNumber];
+                    var id = Ext.id();
+                    Ext.defer(createGridButton, delay, this, [button, id]);
+                    delay++;
+                    result = Ext.String.format('{0}<td><div id="{1}"></div></td>', result, id);
+                }
+                result = Ext.String.format('{0}</tr>', result);
+            }
+        }
+    }
+    result = Ext.String.format('{0}</table>', result);
+
+    return result;
+}
+function createGridButton(metadata, id) {
+    new Ext.Button(
+        {
+            text: metadata.text,
+            flex: 1,
+            handler : metadata.function
+        }
+    ).render(id);
+}
+
+
 
 module.exports = columnsExtJsMetadata;

@@ -19,7 +19,8 @@ var data =
             BusinessUnit: '',
             DivisionCode: '',
             DepartmentCode: '',
-            Data: '10.10.2010'
+            Data: '10.10.2010',
+            Id: Ext.id()
         },
         {
             AssetType: 'property',

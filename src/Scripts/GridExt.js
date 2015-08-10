@@ -10,6 +10,7 @@ function cellClick (iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
     detailPanel.update('Click: ' + 'Cell: ' + iColIdx + ', Row: ' + iRowIdx + ', Text cell: ' + iCellEl.textContent);
 }
 
+
 Ext.onReady(function(){
 
     Ext.define('Assets',{
@@ -22,21 +23,22 @@ Ext.onReady(function(){
         Grid.setSize(Ext.getBody().getViewSize().width, height);
     });
 
+
+
     var Store = Ext.create('Ext.data.Store', {
         model: 'Assets',
-        autoLoad: true,
         pageSize: itemsPerPage,
         data : data,
         proxy: {
             type: 'memory',
             enablePaging : true,
             reader: {
-                type: 'json',
                 rootProperty: 'data',
                 totalProperty: 'total'
             }
         },
-        groupField: 'AssetType'
+        groupField: 'AssetType',
+        autoLoad: true
     });
 
     var Grid = Ext.create('Ext.grid.Panel', {
@@ -48,11 +50,9 @@ Ext.onReady(function(){
             dock: 'bottom',
             displayInfo: true
         }],
-        renderTo: Ext.getBody(),
         columns: columnsMetadata,
         height: 800,
         region: 'north',
-        layout:'fit',
         plugins: 'gridfilters',
         multiSelect: true,
         selType: 'checkboxmodel',
@@ -63,10 +63,10 @@ Ext.onReady(function(){
         listeners: {
             'cellclick': cellClick
         },
-        viewConfig: {
-            forceFit: true
-        }
+        renderTo: Ext.getBody()
     });
+
+    //Store.load();
 
     var Panel = {
         id: 'detailPanel',
@@ -76,7 +76,8 @@ Ext.onReady(function(){
         html: 'Please select a row.'
     };
 
-    Ext.create('Ext.container.Viewport',{
+
+ var View =  Ext.create('Ext.container.Viewport',{
         items:
             [
                 Grid,
@@ -84,7 +85,6 @@ Ext.onReady(function(){
             ]
     });
 
-    Store.load();
+
 
 });
-

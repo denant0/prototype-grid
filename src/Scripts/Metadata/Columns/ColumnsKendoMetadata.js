@@ -1,20 +1,97 @@
+var dataIndex = require('../Enumeration').DataIndex;
+var columnTitle = require('../Enumeration').ColumnsText;
+
 var columnsKendoMetadata = [
-    {title: 'Asset Type', field: 'AssetType', width: 200, groupHeaderTemplate: 'Asset Type: #= value # (Count: #= count#)'},
-    {title: 'Asset Standard', field: 'AssetStandard', width: 200},
-    {title: 'Asset Status', field: 'AssetStatus', width: 200, filterable: { multi: true }},
-    {title: 'Title/Description', field: 'TitleDescription', width: 500},
-    {title: 'Geo-Region ID', field: 'GeoRegionID', width: 200},
-    {title: 'Country Code', field: 'CountryCode', width: 200},
-    {title: 'State Code', field: 'StateCode', width: 200},
-    {title: 'City Code', field: 'CityCode', width: 200},
-    {title: 'Site Code', field: 'SiteCode', width: 200},
-    {title: 'Building Code', field: 'BuildingCode', width: 200},
-    {title: 'Floor Code', field: 'FloorCode', width: 200},
-    {title: 'Room Code', field: 'RoomCode', width: 200},
-    {title: 'Business Unit', field: 'BusinessUnit', width: 200},
-    {title: 'Division Code', field: 'DivisionCode', width: 200},
-    {title: 'Department Code', field: 'DepartmentCode', width: 200},
-    {title: 'Date', field: 'Data', width: 200, format: "{0:MM/dd/yyyy HH:mm tt}", filterable: { ui: "datetimepicker" }}
+    {
+        title: columnTitle.AssetType,
+        field: dataIndex.AssetType,
+        width: 200,
+        groupHeaderTemplate: 'Asset Type: #= value # (Count: #= count#)'
+    },
+    {
+        title: columnTitle.AssetStandard,
+        field: dataIndex.AssetStandard,
+        width: 200
+    },
+    {
+        title: columnTitle.AssetStatus,
+        field: dataIndex.AssetStatus,
+        width: 200,
+        filterable:
+        {
+            multi: true
+        }
+    },
+    {
+        title: columnTitle.TitleDescription,
+        field: dataIndex.TitleDescription,
+        width: 500
+    },
+    {
+        title: columnTitle.GeoRegionID,
+        field: dataIndex.GeoRegionID,
+        width: 200
+    },
+    {
+        title: columnTitle.CountryCode,
+        field: dataIndex.CountryCode,
+        width: 200
+    },
+    {
+        title: columnTitle.StateCode,
+        field: dataIndex.StateCode,
+        width: 200
+    },
+    {
+        title: columnTitle.CityCode,
+        field: dataIndex.CityCode,
+        width: 200
+    },
+    {
+        title: columnTitle.SiteCode,
+        field: dataIndex.SiteCode,
+        width: 200
+    },
+    {
+        title: columnTitle.BuildingCode,
+        field: dataIndex.BuildingCode,
+        width: 200
+    },
+    {
+        title: columnTitle.FloorCode,
+        field: dataIndex.FloorCode,
+        width: 200
+    },
+    {
+        title: columnTitle.RoomCode,
+        field: dataIndex.RoomCode,
+        width: 200
+    },
+    {
+        title: columnTitle.BusinessUnit,
+        field: dataIndex.BusinessUnit,
+        width: 200
+    },
+    {
+        title: columnTitle.DivisionCode,
+        field: dataIndex.DivisionCode,
+        width: 200
+    },
+    {
+        title: columnTitle.DepartmentCode,
+        field: dataIndex.DepartmentCode,
+        width: 200
+    },
+    {
+        title: dataIndex.Data,
+        field: dataIndex.Data,
+        width: 200,
+        format: "{0:MM/dd/yyyy HH:mm tt}",
+        filterable:
+        {
+            ui: "datetimepicker"
+        }
+    }
 ];
 
 module.exports = columnsKendoMetadata;

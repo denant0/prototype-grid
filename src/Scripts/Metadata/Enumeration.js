@@ -61,6 +61,40 @@ var columnsText = {
     Data: 'Data'
 };
 
+var buttonsMetadata = [
+    {
+        condition: {
+            column: dataIndex.AssetType,
+            value: 'bl'
+        },
+        items: [
+            [
+                {
+                    text: 'Button1',
+                    function: function(){
+                        alert('Hello 1');
+                    }
+                },
+                {
+                    text: 'Button2',
+                    function: function(){
+                        alert('Hello 2');
+                    }
+                }
+            ],
+            [
+                {
+                    text: 'Button3',
+                    function: function(){
+                        alert('Hello 3');
+                    }
+                }
+            ]
+        ]
+    }
+];
+
 module.exports.ClassStyle = classStyle;
 module.exports.DataIndex = dataIndex;
 module.exports.ColumnsText = columnsText;
+module.exports.ButtonsMetadata = buttonsMetadata;
