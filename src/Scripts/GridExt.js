@@ -18,27 +18,28 @@ Ext.onReady(function(){
         fields: modelMetadata
     });
 
-    Ext.EventManager.onWindowResize(function () {
+    Ext.on('resize', function(){
         var height = Ext.getBody().getViewSize().height - lengthConsole;
         Grid.setSize(Ext.getBody().getViewSize().width, height);
     });
 
-
+    Ext.tip.QuickTipManager.init();
 
     var Store = Ext.create('Ext.data.Store', {
         model: 'Assets',
+        autoLoad: true,
         pageSize: itemsPerPage,
         data : data,
         proxy: {
             type: 'memory',
             enablePaging : true,
             reader: {
+                type: 'json',
                 rootProperty: 'data',
                 totalProperty: 'total'
             }
         },
-        groupField: 'AssetType',
-        autoLoad: true
+        groupField: 'AssetType'
     });
 
     var Grid = Ext.create('Ext.grid.Panel', {
@@ -50,9 +51,11 @@ Ext.onReady(function(){
             dock: 'bottom',
             displayInfo: true
         }],
+        renderTo: Ext.getBody(),
         columns: columnsMetadata,
         height: 800,
         region: 'north',
+        layout:'fit',
         plugins: 'gridfilters',
         multiSelect: true,
         selType: 'checkboxmodel',
@@ -63,10 +66,12 @@ Ext.onReady(function(){
         listeners: {
             'cellclick': cellClick
         },
-        renderTo: Ext.getBody()
+        viewConfig: {
+            forceFit: true
+        }
     });
 
-    //Store.load();
+    Store.load();
 
     var Panel = {
         id: 'detailPanel',
@@ -76,15 +81,11 @@ Ext.onReady(function(){
         html: 'Please select a row.'
     };
 
-
- var View =  Ext.create('Ext.container.Viewport',{
+    var View =  Ext.create('Ext.container.Viewport',{
         items:
             [
                 Grid,
                 Panel
             ]
     });
-
-
-
 });

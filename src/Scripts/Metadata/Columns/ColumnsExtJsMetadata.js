@@ -1,8 +1,7 @@
 var classStyle = require('../Enumeration').ClassStyle;
 var dataIndex = require('../Enumeration').DataIndex;
 var columnTitle = require('../Enumeration').ColumnsText;
-var buttonsMetadata = require('../Enumeration').ButtonsMetadata;
-
+var buttonsMetadata = require('../Buttons/ButtonsExtJsMetadata');
 
 function summaryRendererAssetType(value){
     return Ext.String.format('Sum: {0}', value);
@@ -17,182 +16,124 @@ function renderActivity (value, metaData) {
     }
     return value;
 }
-
-/*function renderButton(value, metadata, record){
-
-}*/
-Ext.Loader.setConfig({ enabled: true
-});
 var columnsExtJsMetadata = [
     {
-        header: columnTitle.AssetType,
+        text: columnTitle.AssetType,
         dataIndex: dataIndex.AssetType,
         width: 150,
         sortable: true,
         summaryType: 'count',
-        summaryRenderer: summaryRendererAssetType,
-        renderer: renderActivity
+        summaryRenderer: summaryRendererAssetType
     },
     {
-        header: columnTitle.AssetStandard,
+        text: columnTitle.AssetStandard,
         dataIndex: dataIndex.AssetStandard,
-        width: 150,
+        width: 125,
         sortable: true,
-        filter:  'string',
-        renderer: renderActivity
+        filter:  'string'
     },
     {
-        header: columnTitle.AssetStatus,
+        text: columnTitle.AssetStatus,
         dataIndex: dataIndex.AssetStatus,
-        width: 150,
+        width: 125,
         sortable: true,
         filter: {
             type: 'list',
             options:['ESCROWED','FOR SALE','LEASED','LEASED (EXPIRED)','N/A', 'OWNED', 'OWNED AND LEASED', 'SOLD', 'SUB LET', 'SUB-LEASED', 'UNDER CONTRACT', 'UNKNOWN', 'in', 'miss', 'out', 'rep', 'stor',]
-        },
-        renderer: renderActivity
+        }
     },
     {
-        header: columnTitle.TitleDescription,
+        text: columnTitle.TitleDescription,
         dataIndex: dataIndex.TitleDescription,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.GeoRegionID,
+        text: columnTitle.GeoRegionID,
         dataIndex: dataIndex.GeoRegionID,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.CountryCode,
+        text: columnTitle.CountryCode,
         dataIndex: dataIndex.CountryCode,
-        width: 150,
+        width: 125,
         sortable: true,
         renderer: renderActivity
     },
     {
-        header: columnTitle.StateCode,
+        text: columnTitle.StateCode,
         dataIndex: dataIndex.StateCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.CityCode,
+        text: columnTitle.CityCode,
         dataIndex: dataIndex.CityCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.SiteCode,
+        text: columnTitle.SiteCode,
         dataIndex: dataIndex.SiteCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.BuildingCode,
+        text: columnTitle.BuildingCode,
         dataIndex: dataIndex.BuildingCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.FloorCode,
+        text: columnTitle.FloorCode,
         dataIndex: dataIndex.FloorCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.RoomCode,
+        text: columnTitle.RoomCode,
         dataIndex: dataIndex.RoomCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.BusinessUnit,
+        text: columnTitle.BusinessUnit,
         dataIndex: dataIndex.BusinessUnit,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.DivisionCode,
+        text: columnTitle.DivisionCode,
         dataIndex: dataIndex.DivisionCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.DepartmentCode,
+        text: columnTitle.DepartmentCode,
         dataIndex: dataIndex.DepartmentCode,
-        width: 150,
-        sortable: true,
-        renderer: renderActivity
+        width: 125,
+        sortable: true
     },
     {
-        header: columnTitle.Data,
+        text: columnTitle.Data,
         dataIndex: dataIndex.Data,
-        width: 150,
+        width: 125,
         sortable: true,
         xtype:'datecolumn',
         format: 'd/m/Y',
         filter: {
             type: 'date',
             dateFormat: 'm/d/Y'
-        },
-
-        renderer: renderActivity
+        }
     },
     {
-        header: 'Buttons',
-        width: 150,
-        renderer: renderBtn
+        xtype: 'actioncolumn',
+        items: buttonsMetadata
 
     }
 
 ];
-
-function renderBtn(value, metadata, record) {
-    var delay = 1;
-    var result = '<table>';
-    for(conditionNumber in buttonsMetadata){
-        var condition = buttonsMetadata[conditionNumber].condition;
-        if(record.data[condition.column] == condition.value) {
-            var items = buttonsMetadata[conditionNumber].items;
-            for (lineNumber in items) {
-                result = Ext.String.format('{0}<tr>', result);
-                var line = items[lineNumber];
-                for (buttonNumber in line) {
-                    var button = line[buttonNumber];
-                    var id = Ext.id();
-                    Ext.defer(createGridButton, delay, this, [button, id]);
-                    delay++;
-                    result = Ext.String.format('{0}<td><div id="{1}"></div></td>', result, id);
-                }
-                result = Ext.String.format('{0}</tr>', result);
-            }
-        }
-    }
-    result = Ext.String.format('{0}</table>', result);
-
-    return result;
-}
-function createGridButton(metadata, id) {
-    new Ext.Button(
-        {
-            text: metadata.text,
-            flex: 1,
-            handler : metadata.function
-        }
-    ).render(id);
-}
 
 
 
