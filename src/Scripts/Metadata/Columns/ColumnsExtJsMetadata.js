@@ -130,7 +130,6 @@ var columnsExtJsMetadata = [
     {
         xtype: 'actioncolumn',
         items: buttonsMetadata
-
     }
 
 ];

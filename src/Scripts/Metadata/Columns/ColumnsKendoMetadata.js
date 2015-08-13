@@ -1,7 +1,39 @@
 var dataIndex = require('../Enumeration').DataIndex;
 var columnTitle = require('../Enumeration').ColumnsText;
+var buttonsMetadata = require('../Buttons/ButtonKendoMetadata');
+
+var idMas = [];
+var idNumber = 1;
+
+function renderButton(value){
+    var result = '';
+    for(number in buttonsMetadata){
+        var button = buttonsMetadata[number];
+        var conditions = button.condition;
+        for(element in conditions){
+            var condition = conditions[element];
+            if(value[condition.column] == condition.value){
+                var id = createId();
+                result = kendo.format('{1}<div id="{0}" style="float: left"></div>',id, result,button.tooltip);
+                idMas.push({id: id, numberButton: number});
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+function createId(){
+    var id = kendo.format('kendo-{0}', idNumber);
+    idNumber++;
+    return id;
+}
 
 var columnsKendoMetadata = [
+    {
+        width: 50,
+        template: '<input class="checkbox" type="checkbox" />'
+    },
     {
         title: columnTitle.AssetType,
         field: dataIndex.AssetType,
@@ -91,7 +123,13 @@ var columnsKendoMetadata = [
         {
             ui: "datetimepicker"
         }
+    },
+    {
+        template: renderButton,
+        width: 200
     }
+
 ];
 
-module.exports = columnsKendoMetadata;
+module.exports.Id = idMas;
+module.exports.col = columnsKendoMetadata;

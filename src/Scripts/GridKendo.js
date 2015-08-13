@@ -1,9 +1,13 @@
 var data= require('../Scripts/Dataset/Data');
 var modelMetadata = require('../Scripts/Metadata/Model/ModelKendoMetadata');
-var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata');
+var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').col;
 
 var classStyle = require('../Scripts/Metadata/Enumeration').ClassStyle;
 var dataIndex = require('../Scripts/Metadata/Enumeration').DataIndex;
+
+var buttonsMetadata = require('../Scripts/Metadata/Buttons/ButtonKendoMetadata');
+var idMas = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').Id;
+
 
 
 $(document).ready(function () {
@@ -94,8 +98,29 @@ $(document).ready(function () {
                     cell.addClass(getCellColorClass(units, index));
                 }
             }
+            renderButton();
+
+
         }
     }, configuration));
+
+    $(".checkbox").bind("change", function (e) {
+        $(e.target).closest("tr").toggleClass("k-state-selected");
+    });
+
+
+
+    function renderButton(){
+        for(number in idMas){
+            var id = idMas[number].id;
+            var button = buttonsMetadata[idMas[number].numberButton];
+            $(kendo.format('#{0}', id)).kendoButton({
+                imageUrl: button.icon,
+                click: button.handler
+            });
+        }
+    }
+
 });
 
 
