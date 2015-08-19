@@ -42,6 +42,8 @@ Ext.onReady(function(){
         groupField: 'AssetType'
     });
 
+
+
     var Grid = Ext.create('Ext.grid.Panel', {
         bufferedRenderer: false,
         store: Store,

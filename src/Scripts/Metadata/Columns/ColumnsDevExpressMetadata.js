@@ -2,6 +2,25 @@ var classStyle = require('../Enumeration').ClassStyle;
 var dataIndex = require('../Enumeration').DataIndex;
 var columnTitle = require('../Enumeration').ColumnsText;
 
+var buttonsMetadata = require('../Buttons/ButtonDevExpressMetadata');
+
+
+function renderButton(cellElement, cellInfo){
+
+    for(number in buttonsMetadata){
+        var button = buttonsMetadata[number];
+        var conditions = button.condition;
+        for(element in conditions){
+            var condition = conditions[element];
+            if(cellInfo.data[condition.column] == condition.value){
+                var $button = $('<img src="'+ button.icon +'">')
+                    .on("click", $.proxy(button.handler, this, cellInfo));
+                cellElement.append($button);
+                break;
+            }
+        }
+    }
+}
 
 function cellColor(container, cellInfo){
     var dataIndex = cellInfo.column.dataField;
@@ -127,7 +146,12 @@ var columnsDevExpressMetadata = [
         dataType: 'data',
         width: 200,
         cellTemplate: cellColor
+    },
+    {
+        cellTemplate: renderButton,
+        width: 200
     }
 ];
+
 
 module.exports = columnsDevExpressMetadata;

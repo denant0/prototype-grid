@@ -3,6 +3,7 @@ $(function ()
     var data = require('./Dataset/Data');
     var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsDevExpressMetadata');
 
+
     var initialContainerHeight = $("#gridContainer").height();
 
     function onResize(){
@@ -22,13 +23,13 @@ $(function ()
 
     $("#gridContainer").dxDataGrid({
         dataSource: data.data,
-        columns: columnsMetadata,
+            columns: columnsMetadata,
         allowColumnReordering: true,
         allowColumnResizing: true,
         pager: {
-            showPageSizeSelector: true,
+        showPageSizeSelector: true,
             allowedPageSizes: [5, 10, 20, 50, 100 ]
-        },
+    },
         paging: {
             pageSize: 100
         },
@@ -44,15 +45,15 @@ $(function ()
         },
         filterRow: {
             visible: true,
-            applyFilter: "auto"
+                applyFilter: "auto"
         },
         headerFilter: {
             visible: true
         },
         searchPanel: {
             visible: true,
-            width: 240,
-            placeholder: 'Search...'
+                width: 240,
+                placeholder: 'Search...'
         },
         selection: {
             mode: 'multiple'
@@ -66,4 +67,9 @@ $(function ()
         height: gridHeight
 
     });
+
+
+
+
+
 });

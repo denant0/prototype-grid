@@ -131,5 +131,5 @@ var columnsKendoMetadata = [
 
 ];
 
-module.exports.Id = idMas;
-module.exports.col = columnsKendoMetadata;
+module.exports.IdMas = idMas;
+module.exports.Columns = columnsKendoMetadata;

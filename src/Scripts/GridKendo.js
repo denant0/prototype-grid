@@ -1,12 +1,12 @@
 var data= require('../Scripts/Dataset/Data');
 var modelMetadata = require('../Scripts/Metadata/Model/ModelKendoMetadata');
-var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').col;
+var columnsMetadata = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').Columns;
 
 var classStyle = require('../Scripts/Metadata/Enumeration').ClassStyle;
 var dataIndex = require('../Scripts/Metadata/Enumeration').DataIndex;
 
 var buttonsMetadata = require('../Scripts/Metadata/Buttons/ButtonKendoMetadata');
-var idMas = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').Id;
+var idMas = require('../Scripts/Metadata/Columns/ColumnsKendoMetadata').IdMas;
 
 
 
