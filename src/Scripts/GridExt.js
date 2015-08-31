@@ -10,6 +10,12 @@ function cellClick (iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
     detailPanel.update('Click: ' + 'Cell: ' + iColIdx + ', Row: ' + iRowIdx + ', Text cell: ' + iCellEl.textContent);
 }
 
+function autoSizeColumn(dataView){
+    Ext.each(dataView.panel.columns, function (column) {
+        if (column.autoResize) column.autoSize();
+    });
+}
+
 
 Ext.onReady(function(){
 
@@ -42,8 +48,6 @@ Ext.onReady(function(){
         groupField: 'AssetType'
     });
 
-
-
     var Grid = Ext.create('Ext.grid.Panel', {
         bufferedRenderer: false,
         store: Store,
@@ -69,7 +73,9 @@ Ext.onReady(function(){
             'cellclick': cellClick
         },
         viewConfig: {
-            forceFit: true
+            listeners: {
+                refresh: autoSizeColumn
+            }
         }
     });
 

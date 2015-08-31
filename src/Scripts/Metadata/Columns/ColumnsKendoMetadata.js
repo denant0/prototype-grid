@@ -57,7 +57,7 @@ var columnsKendoMetadata = [
     {
         title: columnTitle.TitleDescription,
         field: dataIndex.TitleDescription,
-        width: 500
+        width: 100
     },
     {
         title: columnTitle.GeoRegionID,

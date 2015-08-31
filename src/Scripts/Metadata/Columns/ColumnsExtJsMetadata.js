@@ -20,8 +20,9 @@ var columnsExtJsMetadata = [
     {
         text: columnTitle.AssetType,
         dataIndex: dataIndex.AssetType,
-        width: 150,
+        width: 125,
         sortable: true,
+        autoSize: true,
         summaryType: 'count',
         summaryRenderer: summaryRendererAssetType
     },
@@ -29,6 +30,7 @@ var columnsExtJsMetadata = [
         text: columnTitle.AssetStandard,
         dataIndex: dataIndex.AssetStandard,
         width: 125,
+        autoSize: true,
         sortable: true,
         filter:  'string'
     },
@@ -36,6 +38,7 @@ var columnsExtJsMetadata = [
         text: columnTitle.AssetStatus,
         dataIndex: dataIndex.AssetStatus,
         width: 125,
+        autoSize: true,
         sortable: true,
         filter: {
             type: 'list',
@@ -45,80 +48,82 @@ var columnsExtJsMetadata = [
     {
         text: columnTitle.TitleDescription,
         dataIndex: dataIndex.TitleDescription,
-        width: 125,
+        width: 300,
+        autoSize: false,
         sortable: true
     },
     {
         text: columnTitle.GeoRegionID,
         dataIndex: dataIndex.GeoRegionID,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.CountryCode,
         dataIndex: dataIndex.CountryCode,
-        width: 125,
+        autoSize: true,
         sortable: true,
         renderer: renderActivity
     },
     {
         text: columnTitle.StateCode,
         dataIndex: dataIndex.StateCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.CityCode,
         dataIndex: dataIndex.CityCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.SiteCode,
         dataIndex: dataIndex.SiteCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.BuildingCode,
         dataIndex: dataIndex.BuildingCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.FloorCode,
         dataIndex: dataIndex.FloorCode,
         width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.RoomCode,
         dataIndex: dataIndex.RoomCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.BusinessUnit,
         dataIndex: dataIndex.BusinessUnit,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.DivisionCode,
         dataIndex: dataIndex.DivisionCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.DepartmentCode,
         dataIndex: dataIndex.DepartmentCode,
-        width: 125,
+        autoSize: true,
         sortable: true
     },
     {
         text: columnTitle.Data,
         dataIndex: dataIndex.Data,
-        width: 125,
+        autoSize: true,
         sortable: true,
         xtype:'datecolumn',
         format: 'd/m/Y',
@@ -129,7 +134,8 @@ var columnsExtJsMetadata = [
     },
     {
         xtype: 'actioncolumn',
-        items: buttonsMetadata
+        items: buttonsMetadata,
+        autoSize: true
     }
 
 ];

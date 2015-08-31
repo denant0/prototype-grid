@@ -60,6 +60,7 @@ $(document).ready(function () {
             pageSize: 100
         },
         resizable: true,
+        scrollable: true,
         sortable: {
             mode: "single",
             allowUnsort: false
@@ -77,6 +78,7 @@ $(document).ready(function () {
         change: onChange
 
     };
+
 
     gridElement.kendoGrid($.extend({
         dataBound: function(e) {
@@ -99,8 +101,6 @@ $(document).ready(function () {
                 }
             }
             renderButton();
-
-
         }
     }, configuration));
 
