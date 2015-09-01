@@ -61,7 +61,7 @@ $(document).ready(function () {
         },
         resizable: true,
         sortable: {
-            mode: "single",
+            mode: "multiple",
             allowUnsort: false
         },
         pageable: {

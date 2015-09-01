@@ -65,7 +65,8 @@ $(function ()
             $('#row').text("Row: " + clickedCell.rowIndex);
         },
         height: gridHeight,
-        columnAutoWidth: true
+        columnAutoWidth: true,
+        sorting: { mode: 'multiple' }
 
     });
 

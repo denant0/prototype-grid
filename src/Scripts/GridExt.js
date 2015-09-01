@@ -10,8 +10,11 @@ function cellClick (iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
     detailPanel.update('Click: ' + 'Cell: ' + iColIdx + ', Row: ' + iRowIdx + ', Text cell: ' + iCellEl.textContent);
 }
 
-function autoSizeColumn(dataView){
-
+function autoSizesColumn(dataview){
+    Ext.each(dataview.panel.columns, function(column) {
+        if (column.autoSizeColumn  === true)
+            column.autoSize();
+    })
 }
 
 
@@ -66,20 +69,16 @@ Ext.onReady(function(){
         features: [{
             ftype: 'groupingsummary',
             groupHeaderTpl: 'Asset Type: {name}'
-        }],
+        } ],
         listeners: {
             'cellclick': cellClick
         },
         viewConfig: {
             listeners: {
-                refresh: function(dataview) {
-                    Ext.each(dataview.panel.columns, function(column) {
-                        if (column.autoSizeColumn  === true)
-                            column.autoSize();
-                    })
-                }
+                refresh: autoSizesColumn
             }
-        }
+        },
+        multiColumnSort: true
     });
 
     Store.load();
