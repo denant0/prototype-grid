@@ -60,7 +60,6 @@ $(document).ready(function () {
             pageSize: 100
         },
         resizable: true,
-        scrollable: true,
         sortable: {
             mode: "single",
             allowUnsort: false
@@ -76,13 +75,13 @@ $(document).ready(function () {
         columnMenu: true,
         columns: columnsMetadata,
         change: onChange
-
     };
 
 
     gridElement.kendoGrid($.extend({
         dataBound: function(e) {
             var columns = e.sender.columns;
+
             var dataItems = e.sender._data;
 
             for(index in classStyle){
@@ -120,6 +119,8 @@ $(document).ready(function () {
             });
         }
     }
+    var grid = $("#gridContainer").data("kendoGrid");
+    for(var i=1;i<grid.columns.length-1;i++){grid.autoFitColumn(i);}
 
 });
 

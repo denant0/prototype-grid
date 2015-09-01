@@ -5,6 +5,7 @@
     <title></title>
     <link rel="stylesheet" href="./Scripts/Kendo/Style/kendo.common-material.min.css" />
     <link rel="stylesheet" href="./Scripts/Kendo/Style/kendo.material.min.css" />
+    <link rel="stylesheet" href="./Scripts/Kendo/Style/kendo.dataviz.material.min.css" />
     <link rel="stylesheet" href="./Scripts/Kendo/Style/console.css" />
     <link rel="stylesheet" type="text/css" href="./Style/CellColor.css" />
     <script src="./Scripts/Kendo/jquery.min.js"></script>
@@ -26,6 +27,11 @@
     {
         overflow: hidden;
         font: 13px sans-serif;
+    }
+
+    #gridContainer > table /* header + data table */
+{
+        table-layout: fixed;
     }
 </style>
 <body>

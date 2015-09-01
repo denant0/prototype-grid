@@ -37,18 +37,16 @@ var columnsKendoMetadata = [
     {
         title: columnTitle.AssetType,
         field: dataIndex.AssetType,
-        width: 200,
+
         groupHeaderTemplate: 'Asset Type: #= value # (Count: #= count#)'
     },
     {
         title: columnTitle.AssetStandard,
-        field: dataIndex.AssetStandard,
-        width: 200
+        field: dataIndex.AssetStandard
     },
     {
         title: columnTitle.AssetStatus,
         field: dataIndex.AssetStatus,
-        width: 200,
         filterable:
         {
             multi: true
@@ -57,67 +55,55 @@ var columnsKendoMetadata = [
     {
         title: columnTitle.TitleDescription,
         field: dataIndex.TitleDescription,
-        width: 100
+        width: 300
     },
     {
         title: columnTitle.GeoRegionID,
-        field: dataIndex.GeoRegionID,
-        width: 200
+        field: dataIndex.GeoRegionID
     },
     {
         title: columnTitle.CountryCode,
-        field: dataIndex.CountryCode,
-        width: 200
+        field: dataIndex.CountryCode
     },
     {
         title: columnTitle.StateCode,
-        field: dataIndex.StateCode,
-        width: 200
+        field: dataIndex.StateCode
     },
     {
         title: columnTitle.CityCode,
-        field: dataIndex.CityCode,
-        width: 200
+        field: dataIndex.CityCode
     },
     {
         title: columnTitle.SiteCode,
-        field: dataIndex.SiteCode,
-        width: 200
+        field: dataIndex.SiteCode
     },
     {
         title: columnTitle.BuildingCode,
-        field: dataIndex.BuildingCode,
-        width: 200
+        field: dataIndex.BuildingCode
     },
     {
         title: columnTitle.FloorCode,
-        field: dataIndex.FloorCode,
-        width: 200
+        field: dataIndex.FloorCode
     },
     {
         title: columnTitle.RoomCode,
-        field: dataIndex.RoomCode,
-        width: 200
+        field: dataIndex.RoomCode
     },
     {
         title: columnTitle.BusinessUnit,
-        field: dataIndex.BusinessUnit,
-        width: 200
+        field: dataIndex.BusinessUnit
     },
     {
         title: columnTitle.DivisionCode,
-        field: dataIndex.DivisionCode,
-        width: 200
+        field: dataIndex.DivisionCode
     },
     {
         title: columnTitle.DepartmentCode,
-        field: dataIndex.DepartmentCode,
-        width: 200
+        field: dataIndex.DepartmentCode
     },
     {
         title: dataIndex.Data,
         field: dataIndex.Data,
-        width: 200,
         format: "{0:MM/dd/yyyy HH:mm tt}",
         filterable:
         {

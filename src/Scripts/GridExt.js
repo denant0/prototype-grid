@@ -11,9 +11,7 @@ function cellClick (iView, iCellEl, iColIdx, iStore, iRowEl, iRowIdx, iEvent) {
 }
 
 function autoSizeColumn(dataView){
-    Ext.each(dataView.panel.columns, function (column) {
-        if (column.autoResize) column.autoSize();
-    });
+
 }
 
 
@@ -74,7 +72,12 @@ Ext.onReady(function(){
         },
         viewConfig: {
             listeners: {
-                refresh: autoSizeColumn
+                refresh: function(dataview) {
+                    Ext.each(dataview.panel.columns, function(column) {
+                        if (column.autoSizeColumn  === true)
+                            column.autoSize();
+                    })
+                }
             }
         }
     });
