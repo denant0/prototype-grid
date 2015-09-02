@@ -24,7 +24,11 @@ var columnsExtJsMetadata = [
         sortable: true,
         autoSizeColumn : true,
         summaryType: 'count',
-        summaryRenderer: summaryRendererAssetType
+        summaryRenderer: summaryRendererAssetType,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.AssetStandard,
@@ -32,7 +36,11 @@ var columnsExtJsMetadata = [
         width: 125,
         autoSizeColumn : true,
         sortable: true,
-        filter:  'string'
+        filter:  'string',
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.AssetStatus,
@@ -43,82 +51,134 @@ var columnsExtJsMetadata = [
         filter: {
             type: 'list',
             options:['ESCROWED','FOR SALE','LEASED','LEASED (EXPIRED)','N/A', 'OWNED', 'OWNED AND LEASED', 'SOLD', 'SUB LET', 'SUB-LEASED', 'UNDER CONTRACT', 'UNKNOWN', 'in', 'miss', 'out', 'rep', 'stor',]
-        }
+        },
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.TitleDescription,
         dataIndex: dataIndex.TitleDescription,
         width: 300,
         autoSizeColumn : false,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.GeoRegionID,
         dataIndex: dataIndex.GeoRegionID,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.CountryCode,
         dataIndex: dataIndex.CountryCode,
         autoSizeColumn : true,
         sortable: true,
-        renderer: renderActivity
+        renderer: renderActivity,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.StateCode,
         dataIndex: dataIndex.StateCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.CityCode,
         dataIndex: dataIndex.CityCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.SiteCode,
         dataIndex: dataIndex.SiteCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.BuildingCode,
         dataIndex: dataIndex.BuildingCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.FloorCode,
         dataIndex: dataIndex.FloorCode,
         width: 125,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.RoomCode,
         dataIndex: dataIndex.RoomCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.BusinessUnit,
         dataIndex: dataIndex.BusinessUnit,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.DivisionCode,
         dataIndex: dataIndex.DivisionCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.DepartmentCode,
         dataIndex: dataIndex.DepartmentCode,
         autoSizeColumn : true,
-        sortable: true
+        sortable: true,
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         text: columnTitle.Data,
@@ -130,7 +190,11 @@ var columnsExtJsMetadata = [
         filter: {
             type: 'date',
             dateFormat: 'm/d/Y'
-        }
+        },
+        items:[{
+            xtype: 'searchtrigger',
+            autoSearch: true
+        }]
     },
     {
         xtype: 'actioncolumn',

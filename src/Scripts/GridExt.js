@@ -18,6 +18,8 @@ function autoSizesColumn(dataview){
 }
 
 
+
+
 Ext.onReady(function(){
 
     Ext.define('Assets',{
@@ -98,4 +100,6 @@ Ext.onReady(function(){
                 Panel
             ]
     });
+
+
 });
