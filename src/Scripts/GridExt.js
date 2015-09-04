@@ -18,7 +18,11 @@ function autoSizesColumn(dataview){
 }
 
 
-
+Ext.require([
+    'Ext.data.*',
+    'Ext.grid.*',
+    'Ext.ux.data.PagingMemoryProxy'
+]);
 
 Ext.onReady(function(){
 
@@ -83,7 +87,8 @@ Ext.onReady(function(){
         multiColumnSort: true
     });
 
-    Store.load();
+
+    Store.loadPage(1);
 
     var Panel = {
         id: 'detailPanel',
@@ -103,3 +108,4 @@ Ext.onReady(function(){
 
 
 });
+

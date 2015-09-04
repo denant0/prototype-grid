@@ -27,12 +27,22 @@ gulp.task('kendo', function(){
         .pipe(gulp.dest('dist/Scripts'));
 });
 
+gulp.task('webix', function(){
+    gulp.src('src/Scripts/GridWebix.js')
+        .pipe(browserify({transform: 'reactify'}))
+        .pipe(concat('GridWebix.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/Scripts'));
+});
+
 gulp.task('copy', function(){
     gulp.src('src/index.html')
         .pipe(gulp.dest('dist'));
     gulp.src('src/indexDevExpress.html')
         .pipe(gulp.dest('dist'));
     gulp.src('src/indexKendo.html')
+        .pipe(gulp.dest('dist'));
+    gulp.src('src/indexWebix.html')
         .pipe(gulp.dest('dist'));
     gulp.src('src/Style/**/*.*')
         .pipe(gulp.dest('dist/Style/'));
@@ -42,9 +52,11 @@ gulp.task('copy', function(){
         .pipe(gulp.dest('dist/Scripts/DevExpress/'));
     gulp.src('src/Scripts/Kendo/**/*.*')
         .pipe(gulp.dest('dist/Scripts/Kendo/'));
+    gulp.src('src/Scripts/Webix/**/*.*')
+        .pipe(gulp.dest('dist/Scripts/Webix/'));
 });
 
-gulp.task('default',['extjs', 'devExpress', 'kendo', 'copy']);
+gulp.task('default',['extjs', 'devExpress', 'kendo', 'webix', 'copy']);
 
 gulp.task('watch', function(){
     gulp.watch('src/**/*.*',['default']);
