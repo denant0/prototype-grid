@@ -8,104 +8,108 @@ var columnsWebixMetadata = [
     {
         id: dataIndex.AssetType,
         header: [columnTitle.AssetType,{content:"selectFilter"}],
-        width: 125,
-        sort:"string"
-
+        adjust:'data',
+        sort:"string",
+        template:function(obj, common){
+            if (obj.$group) return  common.treetable(obj, common) + "AssetType: " + obj.value + ". Count: " + obj.$count;
+            return obj.AssetType;
+        }
     },
     {
         header: [columnTitle.AssetStandard,{content:"selectFilter"}],
         id: dataIndex.AssetStandard,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.AssetStatus,{content:"selectFilter"}],
         id: dataIndex.AssetStatus,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.TitleDescription,{content:"selectFilter"}],
         id: dataIndex.TitleDescription,
-        width: 300,
-        sort:"string"
+        sort:"string",
+        width: 300
     },
     {
         header: [columnTitle.GeoRegionID,{content:"selectFilter"}],
         id: dataIndex.GeoRegionID,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.CountryCode,{content:"selectFilter"}],
         id: dataIndex.CountryCode,
-        width: 125,
         cssFormat:cellColor,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.StateCode,{content:"selectFilter"}],
         id: dataIndex.StateCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.CityCode,{content:"selectFilter"}],
         id: dataIndex.CityCode,
-        width: 125,
-        sort:"string"
+        adjust:true,
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.SiteCode,{content:"selectFilter"}],
         id: dataIndex.SiteCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.BuildingCode,{content:"selectFilter"}],
         id: dataIndex.BuildingCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.FloorCode,{content:"selectFilter"}],
         id: dataIndex.FloorCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.RoomCode,{content:"selectFilter"}],
         id: dataIndex.RoomCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.BusinessUnit,{content:"selectFilter"}],
         id: dataIndex.BusinessUnit,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.DivisionCode,{content:"selectFilter"}],
         id: dataIndex.DivisionCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: [columnTitle.DepartmentCode,{content:"selectFilter"}],
         id: dataIndex.DepartmentCode,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
         header: columnTitle.Data,
         id: dataIndex.Data,
-        width: 125,
-        sort:"string"
+        sort:"string",
+        width: 125
     },
     {
-        template:renderButton
-
-
+        template:renderButton,
+        width: 200
     }
 ];
 

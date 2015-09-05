@@ -4,7 +4,6 @@ var data =
     total: '644',
     data: [
         {
-            id: 1,
             AssetType: 'property',
             AssetStandard: '',
             AssetStatus: 'LEASED',
