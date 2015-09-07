@@ -3,19 +3,26 @@ var dataIndex = require('../Enumeration').DataIndex;
 var columnTitle = require('../Enumeration').ColumnsText;
 
 function status(value, obj, t, y){
-    if (obj.ch1) return "row-marked";
+    if (obj.ch1 && !obj.$group)
+        return "row-marked";
     return "";
 }
 
 var columnsWebixMetadata = [
-    { id:"ch1", header:"",width: 40, template:"{common.checkbox()}", cssFormat:status},
+    {
+        id: "ch1",
+        header: "",
+        width: 40,
+        template: "{common.checkbox()}"
+    },
     {
         id: dataIndex.AssetType,
         header: [columnTitle.AssetType,{content:"selectFilter"}],
         sort:"string",
         width: 200,
         template:function(obj, common){
-            if (obj.$group) return  common.treetable(obj, common) + "AssetType: " + obj.value + ". Count: " + obj.$count;
+            if (obj.$group)
+                return common.treetable(obj, common) + "AssetType: " + obj.value + ". Count: " + obj.$count;
             return obj.AssetType;
         },
         cssFormat:status
@@ -137,7 +144,7 @@ var classStyle = require('../Enumeration').ClassStyle;
 
 
 function cellColor(container, cellInfo, t,y){
-    if (cellInfo.ch1) return "row-marked";
+    if (cellInfo.ch1 && ! cellInfo.$group) return "row-marked";
     var currentEnumStyle = classStyle[y];
     for(element in currentEnumStyle){
         if(container == currentEnumStyle[element].cellText){

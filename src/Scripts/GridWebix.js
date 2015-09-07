@@ -27,6 +27,11 @@ webix.ready(function(){
                 var text = dtable.getItem(id)[id[0].column];
                 webix.message(text);
                 document.getElementById('select').innerHTML = text;
+            },
+            onCheck:function(row, column, value){
+                this.data.eachChild(row, function(item){
+                    item[column] = value;
+                })
             }
         },
         scheme:{
